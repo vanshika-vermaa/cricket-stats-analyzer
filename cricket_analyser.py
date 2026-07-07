@@ -21,7 +21,43 @@ for i in range(len(players)):
 
 print("*" * 64)
 
-print(f"Total players: {len(players)}")
-print(f"Matches array shape: {matches.shape}, dtype: {matches.dtype}")
-print(f"Runs array shape: {runs.shape}, dtype: {runs.dtype}")
-print(f"Wickets array shape: {wickets.shape}, dtype: {wickets.dtype}")
+print()
+
+# Runs statistics
+avg_runs = np.mean(runs)
+max_runs = np.max(runs)
+min_runs = np.min(runs)
+
+print("Run Statistics".center(22))
+print("-" * 23)
+print(f"Average Runs: {avg_runs}")
+print(f"Max Runs:     {max_runs}")
+print(f"Min Runs:     {min_runs}")
+
+print()
+
+# Wickets statistics
+avg_wickets = np.mean(wickets)
+max_wickets = np.max(wickets)
+min_wickets = np.min(wickets)
+
+print("Wicket Statistics".center(22))
+print("-" * 23)
+print(f"Average Wickets: {avg_wickets}")
+print(f"Max Wickets:     {max_wickets}")
+print(f"Min Wickets:     {min_wickets}")
+
+print()
+
+# Top performers
+top_scorer_index = np.argmax(runs)
+top_scorer = players[top_scorer_index]
+
+top_wicket_index = np.argmax(wickets)
+top_wicket_taker = players[top_wicket_index]
+
+
+print("Top Performers".center(33))
+print("-" * 37)
+print(f"Top Run-Scorer:   {top_scorer} ({runs[top_scorer_index]} runs)")
+print(f"Top Wicket-Taker: {top_wicket_taker} ({wickets[top_wicket_index]} wickets)")
