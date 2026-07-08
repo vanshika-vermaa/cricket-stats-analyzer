@@ -28,6 +28,7 @@ avg_runs = np.mean(runs)
 max_runs = np.max(runs)
 min_runs = np.min(runs)
 
+print("-" * 23)
 print("Run Statistics".center(22))
 print("-" * 23)
 print(f"Average Runs: {avg_runs}")
@@ -41,7 +42,8 @@ avg_wickets = np.mean(wickets)
 max_wickets = np.max(wickets)
 min_wickets = np.min(wickets)
 
-print("Wicket Statistics".center(22))
+print("-" * 23)
+print("Wicket Statistics".center(23))
 print("-" * 23)
 print(f"Average Wickets: {avg_wickets}")
 print(f"Max Wickets:     {max_wickets}")
@@ -57,7 +59,21 @@ top_wicket_index = np.argmax(wickets)
 top_wicket_taker = players[top_wicket_index]
 
 
+print("-" * 37)
 print("Top Performers".center(33))
 print("-" * 37)
 print(f"Top Run-Scorer:   {top_scorer} ({runs[top_scorer_index]} runs)")
 print(f"Top Wicket-Taker: {top_wicket_taker} ({wickets[top_wicket_index]} wickets)")
+
+print()
+
+# Batting average per player (vectorized)
+# Dividing the whole 'runs' array by the whole 'matches' array at once,
+# NumPy does this element-by-element automatically; no loop needed
+batting_avg = runs / matches
+
+print("-" * 30)
+print("Batting Average per player".center(30))
+print("-" * 30)
+for i in range(len(players)):
+    print(f"{players[i]:14s}:  {batting_avg[i]:.2f}")
