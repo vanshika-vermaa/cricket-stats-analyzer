@@ -72,8 +72,21 @@ print()
 # NumPy does this element-by-element automatically; no loop needed
 batting_avg = runs / matches
 
-print("-" * 30)
-print("Batting Average per player".center(30))
-print("-" * 30)
+print("-" * 28)
+print("Batting Average per player".center(28))
+print("-" * 28)
 for i in range(len(players)):
-    print(f"{players[i]:14s}:  {batting_avg[i]:.2f}")
+    print(f"{players[i]:14s}:  {batting_avg[i]:>10.2f}")
+
+print()
+
+# Ranking players by runs (highest to lowest)
+# np.argsort() gives indices that would sort the array smallest to largest
+# [::-1] reverses that order, so we get highest to lowest instead
+ranking_indices = np.argsort(runs)[::-1]
+
+print("-" * 30)
+print("Leaderboard (Ranked by Runs)".center(30))
+print("-" * 30)
+for rank, index in enumerate(ranking_indices, start=1):
+    print(f"{rank:2d}. {players[index]:12s} -  {runs[index]} runs")
