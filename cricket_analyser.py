@@ -90,3 +90,21 @@ print("Leaderboard (Ranked by Runs)".center(30))
 print("-" * 30)
 for rank, index in enumerate(ranking_indices, start=1):
     print(f"{rank:2d}. {players[index]:12s} -  {runs[index]} runs")
+
+print()
+
+# Filtering players above a runs threshold
+threshold = 5000
+
+# This creates a True/False array: one value per player, True if runs > threshold
+above_threshold = runs > threshold
+
+# Using that True/False array to select only the matching names and runs
+top_performers = np.array(players)[above_threshold]
+top_performers_runs = runs[above_threshold]
+
+print("-" * 34)
+print(f"Players with more than {threshold} runs".center(34))
+print("-" * 34)
+for name, r in zip(top_performers, top_performers_runs):
+    print(f"{name:12s} - {r:>12} runs")
